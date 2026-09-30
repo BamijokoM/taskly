@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taskly — Simple tasks. Clear days. Better progress.</title>
+  <meta name="description" content="Taskly is a simple Todo List web app. Add tasks, set priority, set due date, complete and track progress." />
+  <!-- Inter font (clean, calm, modern) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="top-bar">
+    <div class="container top-bar-inner">
+      <h1 class="logo">TASKLY</h1>
+      <button id="theme-btn" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </header>
+
+  <!-- ===== MAIN APP ===== -->
+  <main class="container">
+    <!-- Greeting: answers "What do I need to get done today?" -->
+    <section class="greeting">
+      <h2 id="greeting-text">Good morning 👋</h2>
+      <p id="current-date">Wednesday, September 30</p>
+      <p class="sub-text">Here's what you need to get done today.</p>
+    </section>
+
+    <!-- Progress card -->
+    <section class="card progress-card">
+      <h3>Today's Progress</h3>
+      <p id="progress-text">0 of 0 completed</p>
+      <div class="progress-bar">
+        <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+      </div>
+      <p id="progress-percent" class="progress-percent">0%</p>
+    </section>
+
+    <!-- Add task card -->
+    <section class="card add-card">
+      <h3>Add a new task</h3>
+      <form id="task-form">
+        <input
+          type="text"
+          id="task-input"
+          placeholder="Add a new task... e.g. Finish my PM assignment"
+          maxlength="100"
+          required
+        />
+        <div class="form-row">
+          <!-- Priority picker -->
+          <label>
+            Priority
+            <select id="priority-select">
+              <option value="high">🔴 High</option>
+              <option value="medium" selected>🟠 Medium</option>
+              <option value="low">🔵 Low</option>
+            </select>
+          </label>
+          <!-- Due date picker -->
+          <label>
+            Due date
+            <input type="date" id="date-input" />
+          </label>
+          <button type="submit" class="btn-primary">+ Add Task</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Filters: All | Active | Completed -->
+    <section class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="active">Active</button>
+      <button class="filter-btn" data-filter="completed">Completed</button>
+    </section>
+
+    <!-- Task list -->
+    <section class="card list-card">
+      <h3>Today's Tasks</h3>
+      <ul id="task-list" class="task-list"></ul>
+      <p id="empty-state" class="empty-state">No tasks yet. Add your first task above ✨</p>
+    </section>
+
+    <footer class="footer">
+      <p>Simple tasks. Clear days. Better progress.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

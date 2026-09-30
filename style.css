@@ -1,0 +1,414 @@
+/* =========================================
+   TASKLY — style.css
+   Beginner-friendly styles.
+   Colors from PRD:
+   Main: #6366F1 | BG: #F8FAFC | Card: #FFFFFF | Text: #111827
+   Font: Inter
+========================================= */
+
+:root {
+  --main: #6366f1;
+  --main-dark: #4f46e5;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --high: #ef4444;
+  --medium: #f59e0b;
+  --low: #3b82f6;
+  --green: #22c55e;
+  --radius: 14px;
+  --shadow: 0 4px 16px rgba(17, 24, 39, 0.06);
+}
+
+/* Dark mode colors */
+body.dark {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --border: #334155;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ----- Top bar ----- */
+.top-bar {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+}
+
+.top-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--main);
+}
+
+.icon-btn {
+  font-size: 1.2rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+/* ----- Greeting ----- */
+.greeting {
+  margin: 24px 0 16px;
+}
+
+.greeting h2 {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.greeting #current-date {
+  color: var(--muted);
+  font-weight: 500;
+  margin: 2px 0;
+}
+
+.sub-text {
+  color: var(--muted);
+}
+
+/* ----- Cards ----- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.card h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+/* ----- Progress ----- */
+#progress-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  background: var(--border);
+  border-radius: 999px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: var(--main);
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.progress-percent {
+  margin-top: 6px;
+  font-weight: 700;
+  color: var(--main);
+}
+
+/* ----- Form ----- */
+#task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#task-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: end;
+}
+
+.form-row label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: var(--muted);
+  gap: 4px;
+  flex: 1;
+  min-width: 130px;
+}
+
+.form-row select,
+.form-row input[type="date"] {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.btn-primary {
+  background: var(--main);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-primary:hover {
+  background: var(--main-dark);
+}
+
+/* ----- Filters ----- */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin: 4px 0 16px;
+}
+
+.filter-btn {
+  flex: 1;
+  padding: 9px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--muted);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.filter-btn.active {
+  background: var(--main);
+  color: white;
+  border-color: var(--main);
+}
+
+/* ----- Task list ----- */
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.task-item.completed {
+  opacity: 0.65;
+}
+
+.task-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: var(--main);
+}
+
+.task-main {
+  flex: 1;
+}
+
+.task-name {
+  font-weight: 500;
+  word-break: break-word;
+}
+
+/* Completed task looks faded + struck through */
+.task-item.completed .task-name {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.task-meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 3px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Priority dot colors */
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.high { background: var(--high); }
+.dot.medium { background: var(--medium); }
+.dot.low { background: var(--low); }
+
+/* Small edit / delete buttons */
+.task-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-small {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 6px 9px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-family: inherit;
+}
+
+.btn-small.delete:hover {
+  background: #fee2e2;
+  border-color: var(--high);
+}
+
+.btn-small.edit:hover {
+  background: #e0e7ff;
+  border-color: var(--main);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 16px 0 6px;
+}
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 18px 0 30px;
+}
+
+/* ----- Mobile: everything stacks vertically ----- */
+@media (max-width: 520px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-row label {
+    min-width: 100%;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+
+  .greeting {
+    margin: 18px 0 12px;
+  }
+
+  .greeting h2 {
+    font-size: 1.45rem;
+  }
+
+  /* Task rows stack: text on top, buttons full-width below */
+  .task-item {
+    flex-wrap: wrap;
+  }
+
+  .task-main {
+    flex: 1 1 100%;
+    min-width: 0;
+    order: 1;
+  }
+
+  .task-item input[type="checkbox"] {
+    order: 0;
+    width: 22px;
+    height: 22px;
+  }
+
+  .task-actions {
+    order: 2;
+    width: 100%;
+  }
+
+  .task-actions .btn-small {
+    flex: 1;
+    padding: 9px;
+    text-align: center;
+  }
+
+  .filters {
+    gap: 6px;
+  }
+
+  .filter-btn {
+    padding: 10px 4px;
+    font-size: 0.9rem;
+  }
+}
